@@ -1,5 +1,6 @@
 plugins {
     id "cpp"
+    id "google-test-test-suite"
     id "edu.wpi.first.GradleRIO" version "2026.2.1"
 }
 
@@ -76,6 +77,25 @@ model {
             // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
             wpi.cpp.vendor.cpp(it)
             wpi.cpp.deps.wpilib(it)
+        }
+    }
+    testSuites {
+        frcUserProgramTest(GoogleTestTestSuiteSpec) {
+            testing $.components.frcUserProgram
+
+            sources.cpp {
+                source {
+                    srcDir 'src/test/cpp'
+                    include '**/*.cpp'
+                }
+            }
+
+            // Enable run tasks for this component
+            wpi.cpp.enableExternalTasks(it)
+
+            wpi.cpp.vendor.cpp(it)
+            wpi.cpp.deps.wpilib(it)
+            wpi.cpp.deps.googleTest(it)
         }
     }
 }
