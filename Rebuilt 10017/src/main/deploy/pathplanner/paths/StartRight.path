@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.4835062611806795,
+        "y": 0.6195527728085859
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.4835062611806795,
+        "y": 1.94031040370657
+      },
+      "isLocked": false,
+      "linkedName": "StartR"
+    },
+    {
+      "anchor": {
+        "x": 2.7840085592011405,
+        "y": 3.148701854493581
+      },
+      "prevControl": {
+        "x": 3.2627389443651924,
+        "y": 2.4758915834522113
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "RShoot"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "Start (1)",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 116.7797683225758
+  },
+  "useDefaultConstraints": true
+}

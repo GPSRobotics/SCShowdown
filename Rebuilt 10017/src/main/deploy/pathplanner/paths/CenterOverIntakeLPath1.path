@@ -1,0 +1,86 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.5769900142653355,
+        "y": 4.028530670470756
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.3639534883720925,
+        "y": 5.519624329159212
+      },
+      "isLocked": false,
+      "linkedName": "CShoot"
+    },
+    {
+      "anchor": {
+        "x": 3.6120827389443653,
+        "y": 5.568231098430813
+      },
+      "prevControl": {
+        "x": 3.146291012838802,
+        "y": 5.387089871611983
+      },
+      "nextControl": {
+        "x": 4.2281492648529895,
+        "y": 5.8078125251730555
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.837532097004279,
+        "y": 6.046961483594864
+      },
+      "prevControl": {
+        "x": 5.324785411315061,
+        "y": 5.698089595286337
+      },
+      "nextControl": {
+        "x": 6.350278782693497,
+        "y": 6.395833371903391
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 6.989072753214947,
+        "y": 7.0432382310954695
+      },
+      "prevControl": {
+        "x": 5.989072753214947,
+        "y": 7.0432382310954695
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "UnderIntake1Connect"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "OuterIntake1 (2)",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

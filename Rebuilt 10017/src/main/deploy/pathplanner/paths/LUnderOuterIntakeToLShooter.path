@@ -1,0 +1,86 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 7.545435092724677,
+        "y": 5.865820256776035
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 6.235356891188146,
+        "y": 5.735700995136029
+      },
+      "isLocked": false,
+      "linkedName": "OuterLShooter"
+    },
+    {
+      "anchor": {
+        "x": 5.865903614457832,
+        "y": 7.389807228915663
+      },
+      "prevControl": {
+        "x": 6.696409638554217,
+        "y": 7.3788795180722895
+      },
+      "nextControl": {
+        "x": 5.357539503007489,
+        "y": 7.396496230382114
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.30527817403709,
+        "y": 6.395385542168675
+      },
+      "prevControl": {
+        "x": 2.915421686746988,
+        "y": 7.772277108433736
+      },
+      "nextControl": {
+        "x": 1.9445122982543612,
+        "y": 5.581256601331034
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.680499286733238,
+        "y": 5.141255349500714
+      },
+      "prevControl": {
+        "x": 2.0069946332737025,
+        "y": 4.49742397137746
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "LShoot"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "OuterIntake1ToShooter (3)",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

@@ -1,0 +1,70 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.5326818830242506,
+        "y": 5.969329529243937
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.5326818830242506,
+        "y": 5.969329529243937
+      },
+      "isLocked": false,
+      "linkedName": "Intake1"
+    },
+    {
+      "anchor": {
+        "x": 1.7636135957066186,
+        "y": 4.78948121645796
+      },
+      "prevControl": {
+        "x": 1.7572865090452479,
+        "y": 5.0394011395821074
+      },
+      "nextControl": {
+        "x": 1.7960644007155633,
+        "y": 3.5076744186046502
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.5769900142653355,
+        "y": 4.028530670470756
+      },
+      "prevControl": {
+        "x": 2.542432915921288,
+        "y": 3.21561717352415
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "CShoot"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "IntakeToShooter (3)",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

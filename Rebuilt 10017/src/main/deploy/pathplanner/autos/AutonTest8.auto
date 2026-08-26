@@ -1,0 +1,49 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartStayRShoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartShootRToIntake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeToRShooter"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RightUnderIntakeRPath1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeRPath1.5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RUnderOuterIntakeToRShooter"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

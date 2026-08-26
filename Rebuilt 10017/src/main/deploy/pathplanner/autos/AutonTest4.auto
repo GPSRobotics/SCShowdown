@@ -1,0 +1,37 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartLeft"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LeftUnderIntakeRPath1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeRPath1.5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RUnderOuterIntakeToLShooter"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

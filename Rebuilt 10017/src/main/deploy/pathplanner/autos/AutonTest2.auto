@@ -1,0 +1,49 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartLeft"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LeftIntake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeToLShooter"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LeftOverIntakeLPath1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeLPath1.5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LOverOuterIntakeToLShooter"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

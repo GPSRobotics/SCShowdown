@@ -1,0 +1,86 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 7.545435092724677,
+        "y": 5.865820256776035
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 6.898771498392021,
+        "y": 5.751633397238963
+      },
+      "isLocked": false,
+      "linkedName": "OuterLShooter"
+    },
+    {
+      "anchor": {
+        "x": 3.133352353780314,
+        "y": 5.076562054208274
+      },
+      "prevControl": {
+        "x": 4.139468103820835,
+        "y": 5.724674170549125
+      },
+      "nextControl": {
+        "x": 1.921524151785883,
+        "y": 4.295935629659701
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.3315026833631483,
+        "y": 2.4043470483005365
+      },
+      "prevControl": {
+        "x": 1.5975504228895292,
+        "y": 2.8493893098831875
+      },
+      "nextControl": {
+        "x": 2.547458936682802,
+        "y": 2.2733989409695843
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.7840085592011405,
+        "y": 3.148701854493581
+      },
+      "prevControl": {
+        "x": 3.110838986882674,
+        "y": 2.253154220589914
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "RShoot"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "OuterIntake1ToShooter (3)",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

@@ -1,0 +1,86 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 7.3384165477888725,
+        "y": 4.701340941512126
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 5.5788283540763395,
+        "y": 4.760317154894999
+      },
+      "isLocked": false,
+      "linkedName": "Intake1.7ConnectL"
+    },
+    {
+      "anchor": {
+        "x": 5.819964221824687,
+        "y": 7.239516994633274
+      },
+      "prevControl": {
+        "x": 6.436529516994633,
+        "y": 6.6716279069767435
+      },
+      "nextControl": {
+        "x": 5.46093559461934,
+        "y": 7.570201256532936
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.0556708407871196,
+        "y": 4.367620751341681
+      },
+      "prevControl": {
+        "x": 2.331502683363148,
+        "y": 8.164364937388193
+      },
+      "nextControl": {
+        "x": 2.005611587795296,
+        "y": 3.6785698572189327
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.5769900142653355,
+        "y": 4.028530670470756
+      },
+      "prevControl": {
+        "x": 2.591109123434704,
+        "y": 2.6477280858676204
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "CShoot"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "OuterIntake2ToShooter (5)",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

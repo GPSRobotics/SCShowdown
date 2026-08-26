@@ -1,0 +1,70 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 7.3384165477888725,
+        "y": 3.510984308131241
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 6.581516565907636,
+        "y": 3.540125223613595
+      },
+      "isLocked": false,
+      "linkedName": "Intake1.7ConnectR"
+    },
+    {
+      "anchor": {
+        "x": 5.235849731663685,
+        "y": 2.6152772808586757
+      },
+      "prevControl": {
+        "x": 6.25518380917307,
+        "y": 3.0734049561437917
+      },
+      "nextControl": {
+        "x": 3.7917889087656524,
+        "y": 1.9662611806797856
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.7840085592011405,
+        "y": 3.148701854493581
+      },
+      "prevControl": {
+        "x": 3.402379248658318,
+        "y": 2.3718962432915918
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "RShoot"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "OuterIntake2ToShooter (5)",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

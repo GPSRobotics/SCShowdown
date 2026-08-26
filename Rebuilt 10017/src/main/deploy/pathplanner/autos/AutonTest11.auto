@@ -1,0 +1,37 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartLeftMiddle"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CenterUnderIntakeLPath1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeLPath1.5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LUnderOuterIntakeToCenterShooter"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.499731663685152,
+        "y": 7.531574239713775
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.4934777908103523,
+        "y": 7.009266077589763
+      },
+      "isLocked": true,
+      "linkedName": "Start"
+    },
+    {
+      "anchor": {
+        "x": 2.5769900142653355,
+        "y": 4.028530670470756
+      },
+      "prevControl": {
+        "x": 2.5262075134168156,
+        "y": 5.0004114490161
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "CShoot"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": true,
+  "folder": "Start (1)",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -16.99082329198619
+  },
+  "useDefaultConstraints": true
+}

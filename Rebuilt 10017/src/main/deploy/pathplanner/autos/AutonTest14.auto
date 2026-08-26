@@ -1,0 +1,67 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartLeft"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LeftUnderIntakeLPath1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeLPath1.7"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LUnderOuterIntakeToLShooter2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LeftUnderIntakeLPath1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeLPath1.7"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LOverOuterIntakeToLShooter2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LeftUnderIntakeLPath1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeLPath1.7"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

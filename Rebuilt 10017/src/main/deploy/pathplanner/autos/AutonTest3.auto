@@ -1,0 +1,49 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartStayLShoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartShootLToIntake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeToLShooter"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LeftOverIntakeRPath1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeRPath1.5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "ROverOuterIntakeToLShooter"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

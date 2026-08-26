@@ -1,0 +1,70 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.7840085592011405,
+        "y": 3.148701854493581
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.191449016100179,
+        "y": 1.576851520572451
+      },
+      "isLocked": false,
+      "linkedName": "RShoot"
+    },
+    {
+      "anchor": {
+        "x": 1.9907692307692302,
+        "y": 3.3291949910554557
+      },
+      "prevControl": {
+        "x": 2.3288644580695608,
+        "y": 2.0901057315896785
+      },
+      "nextControl": {
+        "x": 1.6526740034688996,
+        "y": 4.568284250521234
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 0.5326818830242506,
+        "y": 5.969329529243937
+      },
+      "prevControl": {
+        "x": 2.0887674539439898,
+        "y": 5.969329529243937
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Intake1"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": true,
+  "folder": "Intake (2)",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

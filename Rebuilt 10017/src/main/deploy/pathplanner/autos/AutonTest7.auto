@@ -1,0 +1,61 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartStayRShoot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartStayR1.5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartRIntake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeRPath1.5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "ROverOuterIntakeToRShooter"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "RightOverIntakeRPath1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeRPath1.5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "ROverOuterIntakeToRShooter"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 6.989072753214947,
+        "y": 7.0432382310954695
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 6.380955777462459,
+        "y": 7.069115549217454
+      },
+      "isLocked": false,
+      "linkedName": "UnderIntake1Connect"
+    },
+    {
+      "anchor": {
+        "x": 7.545435092724677,
+        "y": 5.865820256776035
+      },
+      "prevControl": {
+        "x": 6.587974322396573,
+        "y": 5.9046362339515
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "OuterLShooter"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": true,
+  "folder": "OuterIntake1 (2)",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

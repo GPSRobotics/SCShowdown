@@ -1,0 +1,49 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartRightMiddle"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CenterIntake"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "InakeToCenterShooter"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "CenterOverIntakeLPath1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "IntakeLPath1.5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "LOverOuterIntakeToCenterShooter"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

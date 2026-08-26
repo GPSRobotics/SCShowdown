@@ -1,0 +1,102 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 7.3384165477888725,
+        "y": 4.701340941512126
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 6.747057334398343,
+        "y": 4.711640947381582
+      },
+      "isLocked": false,
+      "linkedName": "Intake1.7ConnectL"
+    },
+    {
+      "anchor": {
+        "x": 5.106046511627906,
+        "y": 5.616976744186046
+      },
+      "prevControl": {
+        "x": 5.888520205748561,
+        "y": 5.734347798304144
+      },
+      "nextControl": {
+        "x": 4.1325223613595705,
+        "y": 5.4709481216457965
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.7840085592011405,
+        "y": 5.308694096601073
+      },
+      "prevControl": {
+        "x": 3.3348027475846016,
+        "y": 5.838600539095099
+      },
+      "nextControl": {
+        "x": 2.23321437081768,
+        "y": 4.778787654107047
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.1043470483005366,
+        "y": 2.939785330948122
+      },
+      "prevControl": {
+        "x": 1.813237097187896,
+        "y": 3.520683939687755
+      },
+      "nextControl": {
+        "x": 2.3954569994131774,
+        "y": 2.358886722208488
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.7840085592011405,
+        "y": 3.148701854493581
+      },
+      "prevControl": {
+        "x": 3.4186046511627906,
+        "y": 2.047388193202146
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "RShoot"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "OuterIntake2ToShooter (5)",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}
