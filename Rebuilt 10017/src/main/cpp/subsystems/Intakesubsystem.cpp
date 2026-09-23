@@ -89,18 +89,21 @@ void IntakeSubsystem::SetArmAngle(double degrees)
     armPID.SetReference(degrees, SparkLowLevel::ControlType::kPosition);
 }
 
+//Turns intake to deployed angle and on with forward
 void IntakeSubsystem::Deploy()
 {
     SetArmAngle(IntakeConstants::kDeployAngle);
     intakeMotor.Set(IntakePower); 
 }
 
+//Turns intake to deployed angle and on with reverse
 void IntakeSubsystem::DeployReverse()
 {
     SetArmAngle(IntakeConstants::kDeployAngle);
     intakeMotor.Set(-0.8);
 }
 
+//Turns intake to stowed angle and off
 void IntakeSubsystem::Stow()
 {
     SetArmAngle(IntakeConstants::kStowedAngle);  

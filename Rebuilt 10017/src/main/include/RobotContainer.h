@@ -13,7 +13,7 @@
 #include "subsystems/Drivesubsystem/DriveSubsystem.h"
 #include "subsystems/ShooterSubsystem/ShooterSubsystem.h"
 #include "subsystems/InjectorSubsystem/InjectorSubsystem.h"
-#include "subsystems/LinearActuatorSubsystem/LinearActuatorSubsystem.h"
+//#include "subsystems/LinearActuatorSubsystem/LinearActuatorSubsystem.h"
 #include "subsystems/IntakeSubsystem/IntakeSubsystem.h"
 #include "subsystems/AgitatorSubsystem/AgitatorSubsystem.h"
 #include "autos/ShootHubAuto.h"
@@ -34,12 +34,12 @@ private:
     DriveSubsystem          drive;
     ShooterSubsystem        shooter{};
     InjectorSubsystem       injector{};
-    LinearActuatorSubsystem actuator{};
+   //LinearActuatorSubsystem actuator{};
     IntakeSubsystem         intake{};
     AgitatorSubsystem       agitator{};
 
     frc2::CommandXboxController driverController{0};
-    frc2::CommandXboxController codriverController{1};
+    //frc2::CommandXboxController codriverController{1};
 
     bool m_autoRPMMode = false;
 

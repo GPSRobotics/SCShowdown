@@ -6,7 +6,7 @@
 namespace IntakeConstants {
 
     // ── CAN Ports ─────────────────────────────────────────────
-    constexpr int kIntakePort   = 4;   // SparkFlex (NEO Vortex) - roller
+    constexpr int kIntakePort   = 4;   // SparkMax (not Flex?) (NEO Vortex) - roller
     constexpr int kArmPort      = 3;   // SparkMax  (NEO)        - arm angle
 
     // ── Roller ────────────────────────────────────────────────

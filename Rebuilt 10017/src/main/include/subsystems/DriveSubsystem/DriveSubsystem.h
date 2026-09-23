@@ -28,7 +28,7 @@ public:
 
     // ── Drive ──────────────────────────────────────────────────
     void ArcadeDrive(double speed, double rotation);
-    void SetHWheelPower(double power);
+    //void SetHWheelPower(double power);
 
     // Used by PathPlanner to drive the robot along a path
     void DriveWithSpeeds(frc::ChassisSpeeds speeds);
@@ -45,8 +45,8 @@ public:
 private:
     ctre::phoenix6::hardware::TalonFX leftMotor  { DriveConstants::kLeftMotorID  };
     ctre::phoenix6::hardware::TalonFX rightMotor { DriveConstants::kRightMotorID };
-    rev::spark::SparkMax middleMotor { DriveConstants::kMiddleMotorID,
-                                       rev::spark::SparkLowLevel::MotorType::kBrushless };
+    //rev::spark::SparkMax middleMotor { DriveConstants::kMiddleMotorID,
+    //                                   rev::spark::SparkLowLevel::MotorType::kBrushless };
 
     ctre::phoenix6::StatusSignal<units::angle::turn_t>& leftPosition  = leftMotor.GetPosition();
     ctre::phoenix6::StatusSignal<units::angle::turn_t>& rightPosition = rightMotor.GetPosition();

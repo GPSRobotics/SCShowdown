@@ -9,7 +9,7 @@ namespace DriveConstants {
     // ── CAN IDs ────────────────────────────────────────────────
     constexpr int kRightMotorID  = 1;
     constexpr int kLeftMotorID   = 2;
-    constexpr int kMiddleMotorID = 9;
+    //constexpr int kMiddleMotorID = 9;
 
     // ── Drivetrain physical dimensions ─────────────────────────
     constexpr units::meter_t kTrackWidth               = 0.5588_m;   

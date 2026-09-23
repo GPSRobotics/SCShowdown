@@ -16,7 +16,7 @@ using namespace DriveConstants;
 DriveSubsystem::DriveSubsystem()
     : leftMotor  { kLeftMotorID  }
     , rightMotor { kRightMotorID }
-    , middleMotor{ kMiddleMotorID, rev::spark::SparkLowLevel::MotorType::kBrushless }
+    //, middleMotor{ kMiddleMotorID, rev::spark::SparkLowLevel::MotorType::kBrushless }
 {
     // ── Left TalonFX ──────────────────────────────────────────
     configs::TalonFXConfiguration leftConfig{};
@@ -29,12 +29,12 @@ DriveSubsystem::DriveSubsystem()
     rightMotor.GetConfigurator().Apply(rightConfig);
 
     // ── H-wheel SparkMax (NEO) ────────────────────────────────
-    rev::spark::SparkMaxConfig middleConfig{};
-    middleConfig.SetIdleMode(rev::spark::SparkMaxConfig::IdleMode::kBrake);
-    middleConfig.Inverted(false);
-    middleMotor.Configure(middleConfig,
-        rev::ResetMode::kResetSafeParameters,
-        rev::PersistMode::kPersistParameters);
+    // rev::spark::SparkMaxConfig middleConfig{};
+    // middleConfig.SetIdleMode(rev::spark::SparkMaxConfig::IdleMode::kBrake);
+    // middleConfig.Inverted(false);
+    // middleMotor.Configure(middleConfig,
+    //     rev::ResetMode::kResetSafeParameters,
+    //     rev::PersistMode::kPersistParameters);
 
     // ── Zero drive encoders on startup ────────────────────────
     leftMotor.SetPosition(0_tr);
@@ -93,7 +93,7 @@ void DriveSubsystem::Periodic()
     frc::Pose2d pose = GetPose();
     frc::SmartDashboard::PutNumber("Drive/LeftEncoder",    leftPosition.GetValue().value());
     frc::SmartDashboard::PutNumber("Drive/RightEncoder",   rightPosition.GetValue().value());
-    frc::SmartDashboard::PutNumber("Drive/HWheelPower",    middleMotor.Get());
+    //frc::SmartDashboard::PutNumber("Drive/HWheelPower",    middleMotor.Get());
     frc::SmartDashboard::PutNumber("Odometry/X_m",         pose.X().value());
     frc::SmartDashboard::PutNumber("Odometry/Y_m",         pose.Y().value());
     frc::SmartDashboard::PutNumber("Odometry/Angle_deg",   pose.Rotation().Degrees().value());
@@ -113,10 +113,10 @@ void DriveSubsystem::ArcadeDrive(double speed, double rotation)
     rightMotor.SetControl(rightControl);
 }
 
-void DriveSubsystem::SetHWheelPower(double power)
-{
-    middleMotor.Set(std::clamp(power, -1.0, 1.0));
-}
+// void DriveSubsystem::SetHWheelPower(double power)
+// {
+//     middleMotor.Set(std::clamp(power, -1.0, 1.0));
+// }
 
 // Called by PathPlanner every loop tick while following a path.
 // Converts ChassisSpeeds (vx, vy, omega) into left/right motor outputs.

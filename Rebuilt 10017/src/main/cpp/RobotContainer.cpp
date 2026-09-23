@@ -71,9 +71,9 @@ RobotContainer::RobotContainer()
         [this] {
             double speed    = frc::ApplyDeadband( driverController.GetLeftY(),  0.1);
             double rotation = frc::ApplyDeadband(-driverController.GetRightX(), 0.1);
-            double strafe   = frc::ApplyDeadband( driverController.GetLeftX(),  0.1);
+            //double strafe   = frc::ApplyDeadband( driverController.GetLeftX(),  0.1);
             drive.ArcadeDrive(speed, rotation);
-            drive.SetHWheelPower(strafe);
+            //drive.SetHWheelPower(strafe);
         },
         {&drive}
     ));
@@ -103,13 +103,18 @@ void RobotContainer::UpdateDashboard() {
 
 void RobotContainer::ConfigureBindings() {
 
-    driverController.A().OnTrue(frc2::cmd::Run([this]() {
+    driverController.B().OnTrue(frc2::cmd::Run([this]() {
         intake.Deploy();
     }, {&intake}));
+    /*
 
-    codriverController.A().OnTrue(frc2::cmd::Run([this]() {
-        intake.Deploy();
-    }, {&intake}));
+    TURN THIS INTO TOGGLE, B
+
+    */
+
+    // codriverController.A().OnTrue(frc2::cmd::Run([this]() {
+    //     intake.Deploy();
+    // }, {&intake}));
 
     driverController.Y().OnTrue(frc2::cmd::Run([this](){
         intake.IntakeOut();
@@ -164,17 +169,17 @@ driverController.Y().OnTrue(
     )
 );
 
-codriverController.Y().OnTrue(
-    frc2::cmd::Sequence(
-        frc2::cmd::RunOnce([this]() {
-            intake.Stow();
-        }, {&intake}),
-        frc2::cmd::Wait(1_s),
-        frc2::cmd::RunOnce([this]() {
-            intake.Deploy();
-        }, {&intake})
-    )
-);
+// codriverController.Y().OnTrue(
+//     frc2::cmd::Sequence(
+//         frc2::cmd::RunOnce([this]() {
+//             intake.Stow();
+//         }, {&intake}),
+//         frc2::cmd::Wait(1_s),
+//         frc2::cmd::RunOnce([this]() {
+//             intake.Deploy();
+//         }, {&intake})
+//     )
+// );
 
     driverController.X().OnTrue(frc2::cmd::RunOnce([this]() {
         shooter.ShooterOff();
@@ -182,17 +187,17 @@ codriverController.Y().OnTrue(
         agitator.AgitatorOff();
     }, {&shooter, &injector, &agitator}));
 
-    codriverController.X().OnTrue(frc2::cmd::RunOnce([this]() {
-        shooter.ShooterOff();
-        injector.InjectorOff();
-        agitator.AgitatorOff();
-    }, {&shooter, &injector, &agitator}));
+    // codriverController.X().OnTrue(frc2::cmd::RunOnce([this]() {
+    //     shooter.ShooterOff();
+    //     injector.InjectorOff();
+    //     agitator.AgitatorOff();
+    // }, {&shooter, &injector, &agitator}));
 
-        codriverController.X().OnTrue(frc2::cmd::RunOnce([this]() {
-        shooter.ShooterOff();
-        injector.InjectorOff();
-        agitator.AgitatorOff();
-    }, {&shooter, &injector, &agitator}));
+    //     codriverController.X().OnTrue(frc2::cmd::RunOnce([this]() {
+    //     shooter.ShooterOff();
+    //     injector.InjectorOff();
+    //     agitator.AgitatorOff();
+    // }, {&shooter, &injector, &agitator}));
 
     driverController.Back().OnTrue(frc2::cmd::RunOnce([this]() {
         drive.ResetOdometryToKnownPosition();
@@ -234,29 +239,29 @@ codriverController.Y().OnTrue(
         agitator.AgitatorIn();
     }, {&shooter, &injector, &agitator}));
 
-    codriverController.POVLeft().WhileTrue(frc2::cmd::Run([this]() {
-        shooter.ShooterCorner();
-        injector.InjectorIn();
-        agitator.AgitatorIn();
-    }, {&shooter, &injector, &agitator}));
+    // codriverController.POVLeft().WhileTrue(frc2::cmd::Run([this]() {
+    //     shooter.ShooterCorner();
+    //     injector.InjectorIn();
+    //     agitator.AgitatorIn();
+    // }, {&shooter, &injector, &agitator}));
 
-    codriverController.POVRight().WhileTrue(frc2::cmd::Run([this]() {
-        shooter.ShooterBarge();
-        injector.InjectorIn();
-        agitator.AgitatorIn();
-    }, {&shooter, &injector, &agitator}));
+    // codriverController.POVRight().WhileTrue(frc2::cmd::Run([this]() {
+    //     shooter.ShooterBarge();
+    //     injector.InjectorIn();
+    //     agitator.AgitatorIn();
+    // }, {&shooter, &injector, &agitator}));
 
-    codriverController.POVUp().WhileTrue(frc2::cmd::Run([this]() {
-        shooter.ShooterHub();
-        injector.InjectorIn();
-        agitator.AgitatorIn();
-    }, {&shooter, &injector, &agitator}));
+    // codriverController.POVUp().WhileTrue(frc2::cmd::Run([this]() {
+    //     shooter.ShooterHub();
+    //     injector.InjectorIn();
+    //     agitator.AgitatorIn();
+    // }, {&shooter, &injector, &agitator}));
 
-    codriverController.POVDown().WhileTrue(frc2::cmd::Run([this]() {
-        shooter.ShooterTower();
-        injector.InjectorIn();
-        agitator.AgitatorIn();
-    }, {&shooter, &injector, &agitator}));
+    // codriverController.POVDown().WhileTrue(frc2::cmd::Run([this]() {
+    //     shooter.ShooterTower();
+    //     injector.InjectorIn();
+    //     agitator.AgitatorIn();
+    // }, {&shooter, &injector, &agitator}));
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
