@@ -34,6 +34,8 @@ namespace IntakeConstants {
     constexpr double kArmMinOutput = -0.3;
     constexpr double kArmMaxOutput =  0.3;
 
+   // bool isDeploy = 0;
+
     // ── Intake States ─────────────────────────────────────────
     enum IntakeStates {
         kIntakeOff,

@@ -3,6 +3,7 @@
 #include "RobotContainer.h"
 #include "GlobalConstants.h"
 #include "subsystems/DriveSubsystem/Constants.h"
+//#include "subsystems/IntakeSubsystem/Constants.h"
 
 #include <frc2/command/Commands.h>
 #include <frc2/command/RunCommand.h>
@@ -11,6 +12,16 @@
 #include <units/time.h>
 
 using namespace units::literals;
+
+//Sloppy temporary variables that will moved around later
+bool isIntakeDeploy = 0;
+//"Hoppers" includes indexer/agitator and kicker/injector
+bool isHoppersReverse = 0;
+bool isIntakeReverse = 0;
+bool isAgitatorForward = 0;
+
+
+float driveCoefficient = 1;
 
 RobotContainer::RobotContainer()
     : m_autoSelection{
@@ -72,10 +83,25 @@ RobotContainer::RobotContainer()
             double speed    = frc::ApplyDeadband( driverController.GetLeftY(),  0.1);
             double rotation = frc::ApplyDeadband(-driverController.GetRightX(), 0.1);
             //double strafe   = frc::ApplyDeadband( driverController.GetLeftX(),  0.1);
-            drive.ArcadeDrive(speed, rotation);
+            // if(driverController.frc::XboxController::GetStartButton())
+            // drive.ArcadeDrive(driveCoefficient*speed, driveCoefficient*rotation);
             //drive.SetHWheelPower(strafe);
+           
+            // Have to figure out agitator thing
+            // if(agitator.GetAgitatorCurrent() >9999){
+                
+            //     frc2::cmd::WaitUntil([this]() {
+            //         agitator.AgitatorOut();
+            //         return (agitator.GetAgitatorCurrent() <=200);
+            // }).WithTimeout(0.5_s),
+            // frc2::cmd::Run([this]() {
+            //     injector.InjectorOut();
+            //     agitator.AgitatorAgitate();
+        //     }, {&injector, &agitator});
+
+        //     };
         },
-        {&drive}
+        {&drive/*, &agitator*/}
     ));
 }
 
@@ -103,30 +129,133 @@ void RobotContainer::UpdateDashboard() {
 
 void RobotContainer::ConfigureBindings() {
 
+    
+// There has to be a better way than this, shouldn't have to copy default function to Start event
+// But it should work for now
+    driverController.Start().OnTrue(frc2::cmd::Run([this]() {
+        double speed    = frc::ApplyDeadband( driverController.GetLeftY(),  0.1);
+        double rotation = frc::ApplyDeadband(-driverController.GetRightX(), 0.1);
+
+       driveCoefficient = 0.5;
+           
+        drive.ArcadeDrive(driveCoefficient*speed, driveCoefficient*rotation);
+        
+    }, {&drive}));
+
+   driverController.Back().OnTrue(frc2::cmd::Run([this]() {
+        double speed    = frc::ApplyDeadband( driverController.GetLeftY(),  0.1);
+        double rotation = frc::ApplyDeadband(-driverController.GetRightX(), 0.1);
+
+       driveCoefficient = 1;
+           
+        drive.ArcadeDrive(driveCoefficient*speed, driveCoefficient*rotation);
+        
+    }, {&drive}));
+
+
     driverController.B().OnTrue(frc2::cmd::Run([this]() {
-        intake.Deploy();
-    }, {&intake}));
-    /*
-
-    TURN THIS INTO TOGGLE, B
-
-    */
-
-    // codriverController.A().OnTrue(frc2::cmd::Run([this]() {
-    //     intake.Deploy();
-    // }, {&intake}));
-
-    driverController.Y().OnTrue(frc2::cmd::Run([this](){
-        intake.IntakeOut();
-        injector.InjectorOut();
-        agitator.AgitatorOut();
-    }, {&intake, &agitator, &injector}));
-
-    driverController.B().WhileTrue(frc2::cmd::Run([this]() {
-        intake.IntakeOff();
+        if(isIntakeDeploy){
+        
+            intake.Stow();
+            isIntakeDeploy = 0;
+            isIntakeReverse = 0;
+        }
+        else{
+            
+            intake.Deploy();
+            isIntakeDeploy = 1;
+            isIntakeReverse = 0;
+        }
     }, {&intake}));
 
     driverController.RightTrigger().WhileTrue(
+        frc2::cmd::Sequence(
+            frc2::cmd::RunOnce([this]() {
+                double distance = drive.GetDistanceToHub();
+                shooter.SetShooterRPMFromDistance(distance);
+            }, {&shooter, &drive}),
+            frc2::cmd::WaitUntil([this]() {
+                return shooter.AtTargetRPM();
+            }).WithTimeout(0.5_s),
+            frc2::cmd::Run([this]() {
+                injector.InjectorOut();
+                agitator.AgitatorAgitate();
+            }, {&injector, &agitator})
+        )
+    );
+
+driverController.Y().OnTrue(frc2::cmd::RunOnce([this]() {
+        if(isHoppersReverse){
+            agitator.AgitatorOff();
+            injector.InjectorOff();
+
+            isHoppersReverse = 0;
+            isAgitatorForward = 0;
+            
+        }
+        else{
+            agitator.AgitatorOut();
+            injector.InjectorIn();
+            
+            isHoppersReverse = 1;
+            isAgitatorForward = 0;
+           
+            
+        }
+        }, {&agitator, &injector})
+
+);
+
+driverController.RightBumper().OnTrue(frc2::cmd::RunOnce([this]() {
+        if(isAgitatorForward){
+            agitator.AgitatorOff();
+
+            isAgitatorForward = 0;
+            
+        }
+        else{
+            agitator.AgitatorAgitate();
+
+            isAgitatorForward = 1;
+
+
+        }
+        }, {&agitator})
+
+);
+
+driverController.LeftBumper().OnTrue(frc2::cmd::RunOnce([this]() {
+        if(isIntakeReverse){
+            intake.IntakeOff();
+
+            isIntakeReverse = 0;
+            isIntakeDeploy = 0;
+            
+        }
+        else{
+            intake.DeployReverse();
+
+            isIntakeReverse = 1;
+            isIntakeDeploy = 0;
+
+
+        }
+        }, {&intake})
+
+);
+
+    driverController.X().OnTrue(frc2::cmd::RunOnce([this]() {
+        shooter.ShooterOff();
+        injector.InjectorOff();
+        agitator.AgitatorOff();
+        intake.IntakeOff();
+        isIntakeDeploy = 0;
+        isIntakeReverse = 0;
+        isHoppersReverse = 0;
+        isAgitatorForward = 0;
+    }, {&shooter, &injector, &agitator, &intake}));
+
+    driverController.POVLeft().WhileTrue(
         frc2::cmd::Sequence(
             frc2::cmd::RunOnce([this]() {
                 shooter.ShooterCorner();
@@ -141,12 +270,11 @@ void RobotContainer::ConfigureBindings() {
         )
     );
 
-    driverController.LeftBumper().WhileTrue(
+    driverController.POVRight().WhileTrue(
         frc2::cmd::Sequence(
             frc2::cmd::RunOnce([this]() {
-                double distance = drive.GetDistanceToHub();
-                shooter.SetShooterRPMFromDistance(distance);
-            }, {&shooter, &drive}),
+                shooter.ShooterBarge();
+            }, {&shooter}),
             frc2::cmd::WaitUntil([this]() {
                 return shooter.AtTargetRPM();
             }).WithTimeout(3_s),
@@ -157,19 +285,68 @@ void RobotContainer::ConfigureBindings() {
         )
     );
 
-driverController.Y().OnTrue(
-    frc2::cmd::Sequence(
-        frc2::cmd::RunOnce([this]() {
-            intake.Stow();
-        }, {&intake}),
-        frc2::cmd::Wait(1_s),
-        frc2::cmd::RunOnce([this]() {
-            intake.Deploy();
-        }, {&intake})
-    )
-);
+    driverController.POVUp().WhileTrue(
+        frc2::cmd::Sequence(
+            frc2::cmd::RunOnce([this]() {
+                shooter.ShooterHub();
+            }, {&shooter}),
+            frc2::cmd::WaitUntil([this]() {
+                return shooter.AtTargetRPM();
+            }).WithTimeout(3_s),
+            frc2::cmd::Run([this]() {
+                injector.InjectorOut();
+                agitator.AgitatorAgitate();
+            }, {&injector, &agitator})
+        )
+    );
 
-// codriverController.Y().OnTrue(
+    driverController.POVDown().WhileTrue(
+        frc2::cmd::Sequence(
+            frc2::cmd::RunOnce([this]() {
+                shooter.ShooterTower();
+            }, {&shooter}),
+            frc2::cmd::WaitUntil([this]() {
+                return shooter.AtTargetRPM();
+            }).WithTimeout(3_s),
+            frc2::cmd::Run([this]() {
+                injector.InjectorOut();
+                agitator.AgitatorAgitate();
+            }, {&injector, &agitator})
+        )
+    );
+
+
+    // codriverController.A().OnTrue(frc2::cmd::Run([this]() {
+    //     intake.Deploy();
+    // }, {&intake}));
+
+    // driverController.Y().OnTrue(frc2::cmd::Run([this](){
+    //     intake.IntakeOut();
+    //     injector.InjectorOut();
+    //     agitator.AgitatorOut();
+    // }, {&intake, &agitator, &injector}));
+
+    // driverController.B().WhileTrue(frc2::cmd::Run([this]() {
+    //     intake.IntakeOff();
+    // }, {&intake}));
+
+    // driverController.RightTrigger().WhileTrue(
+    //     frc2::cmd::Sequence(
+    //         frc2::cmd::RunOnce([this]() {
+    //             shooter.ShooterCorner();
+    //         }, {&shooter}),
+    //         frc2::cmd::WaitUntil([this]() {
+    //             return shooter.AtTargetRPM();
+    //         }).WithTimeout(3_s),
+    //         frc2::cmd::Run([this]() {
+    //             injector.InjectorOut();
+    //             agitator.AgitatorAgitate();
+    //         }, {&injector, &agitator})
+    //     )
+    // );
+
+
+    // codriverController.Y().OnTrue(
 //     frc2::cmd::Sequence(
 //         frc2::cmd::RunOnce([this]() {
 //             intake.Stow();
@@ -180,12 +357,6 @@ driverController.Y().OnTrue(
 //         }, {&intake})
 //     )
 // );
-
-    driverController.X().OnTrue(frc2::cmd::RunOnce([this]() {
-        shooter.ShooterOff();
-        injector.InjectorOff();
-        agitator.AgitatorOff();
-    }, {&shooter, &injector, &agitator}));
 
     // codriverController.X().OnTrue(frc2::cmd::RunOnce([this]() {
     //     shooter.ShooterOff();
@@ -199,27 +370,17 @@ driverController.Y().OnTrue(
     //     agitator.AgitatorOff();
     // }, {&shooter, &injector, &agitator}));
 
-    driverController.Back().OnTrue(frc2::cmd::RunOnce([this]() {
-        drive.ResetOdometryToKnownPosition();
-    }, {&drive}));
+    // driverController.Back().OnTrue(frc2::cmd::RunOnce([this]() {
+    //     drive.ResetOdometryToKnownPosition();
+    // }, {&drive}));
 
-    driverController.POVLeft().WhileTrue(frc2::cmd::Run([this]() {
-        shooter.ShooterCorner();
-        injector.InjectorIn();
-        agitator.AgitatorIn();
-    }, {&shooter, &injector, &agitator}));
-
-    driverController.POVRight().WhileTrue(frc2::cmd::Run([this]() {
-        shooter.ShooterBarge();
-        injector.InjectorIn();
-        agitator.AgitatorIn();
-    }, {&shooter, &injector, &agitator}));
-
-    driverController.POVUp().WhileTrue(frc2::cmd::Run([this]() {
-        shooter.ShooterHub();
-        injector.InjectorIn();
-        agitator.AgitatorIn();
-    }, {&shooter, &injector, &agitator}));
+   
+    // An originial POV just in case
+    // driverController.POVUp().WhileTrue(frc2::cmd::Run([this]() {
+    //     shooter.ShooterHub();
+    //     injector.InjectorIn();
+    //     agitator.AgitatorIn();
+    // }, {&shooter, &injector, &agitator}));
 
     // ── LB: intake arm toggle (deploy ↔ stow) ────────────────
 //     driverController.LeftBumper().OnTrue(frc2::cmd::RunOnce([this]() {
@@ -232,12 +393,6 @@ driverController.Y().OnTrue(
 //         intake.Stow();
 //     }
 // }, {&intake}));
-
-    driverController.POVDown().WhileTrue(frc2::cmd::Run([this]() {
-        shooter.ShooterTower();
-        injector.InjectorIn();
-        agitator.AgitatorIn();
-    }, {&shooter, &injector, &agitator}));
 
     // codriverController.POVLeft().WhileTrue(frc2::cmd::Run([this]() {
     //     shooter.ShooterCorner();

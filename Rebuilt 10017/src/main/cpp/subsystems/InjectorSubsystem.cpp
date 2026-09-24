@@ -10,7 +10,7 @@ using namespace rev::spark;
 InjectorSubsystem::InjectorSubsystem() :
     injectorMotor{InjectorConstants::kInjectorPort, SparkLowLevel::MotorType::kBrushless}
 {
-    //  motor config (not inverted)
+    //  Motor config (inverted)
     rev::spark::SparkFlexConfig Config{};
     Config.Inverted(true)
               .SetIdleMode(rev::spark::SparkFlexConfig::IdleMode::kCoast);
@@ -21,6 +21,7 @@ InjectorSubsystem::InjectorSubsystem() :
 
 void InjectorSubsystem::Periodic() {}
 
+//Technically it would make more sense for injectorin to effectively shoot so I'll fix it later, injectorout leads to ball shooting
 void InjectorSubsystem::InjectorOut() {
     injectorMotor.Set(-1.0);
 }

@@ -4,6 +4,7 @@
 #include <frc2/command/Command.h>
 #include <frc2/command/Commands.h>
 #include <frc2/command/SubsystemBase.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 #include <rev/SparkMax.h>
 
@@ -24,6 +25,7 @@ public:
     void AgitatorIn();
     void SetAgitatorPower(double newPower);
     void GetAgitatorPower();
+    float GetAgitatorCurrent();
     void SetAgitatorState(int newState);
     int  GetAgitatorStates();
     void SetAgitatorBrakeMode(bool state);

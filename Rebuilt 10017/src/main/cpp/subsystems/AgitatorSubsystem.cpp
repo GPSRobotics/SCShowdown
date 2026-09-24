@@ -1,5 +1,6 @@
 #include "subsystems/AgitatorSubsystem/AgitatorSubsystem.h"
 #include "rev/config/SparkMaxConfig.h"
+#include <frc/DriverStation.h>
 
 #include <iostream>
 #include <cmath>
@@ -19,7 +20,9 @@ AgitatorSubsystem::AgitatorSubsystem() :
         SparkMax::PersistMode::kPersistParameters);
     }
 
-void AgitatorSubsystem::Periodic() {}
+void AgitatorSubsystem::Periodic() {
+    frc::SmartDashboard::PutNumber("Agitator Current", GetAgitatorCurrent());
+}
 
 void AgitatorSubsystem::AgitatorOut() {
     agitatorMotor.Set(-0.7);
@@ -36,7 +39,9 @@ void AgitatorSubsystem::AgitatorAgitate() {
 void AgitatorSubsystem::AgitatorIn() {
     agitatorMotor.Set(0.7);
 }
-
+float AgitatorSubsystem::GetAgitatorCurrent() {
+    return agitatorMotor.GetOutputCurrent();
+}
 void AgitatorSubsystem::SetAgitatorPower(double newPower) {}
 void AgitatorSubsystem::GetAgitatorPower() {}
 void AgitatorSubsystem::SetAgitatorState(int newState) {}
