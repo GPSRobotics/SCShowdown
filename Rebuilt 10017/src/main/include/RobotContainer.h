@@ -1,69 +1,43 @@
-//Sam RobotContainer.h
+// Sam RobotContainer.h
 
 #pragma once
 
-//#include <frc/XboxController.h>
-#include <frc2/command/CommandPtr.h>
-#include <frc2/command/Commands.h>
-#include <frc2/command/button/CommandXboxController.h>
-#include <frc/smartdashboard/SmartDashboard.h>
-#include <frc/smartdashboard/SendableChooser.h>
-#include <networktables/NetworkTableInstance.h>
-#include <networktables/IntegerTopic.h>
+#include <memory>
+#include <optional>
+#include <string>
 
-#include "subsystems/Drivesubsystem/DriveSubsystem.h"
-#include "subsystems/ShooterSubsystem/ShooterSubsystem.h"
-#include "subsystems/InjectorSubsystem/InjectorSubsystem.h"
-//#include "subsystems/LinearActuatorSubsystem/LinearActuatorSubsystem.h"
-#include "subsystems/IntakeSubsystem/IntakeSubsystem.h"
-#include "subsystems/AgitatorSubsystem/AgitatorSubsystem.h"
-#include "autos/ShootHubAuto.h"
-#include "autos/ShootTowerAuto.h"
-#include "autos/ShootBargeAuto.h"
-#include "autos/ShootCornerAuto.h"
-#include "autos/RightSideAuto.h"
-#include "autos/ShootHubRightAuto.h"
+#include <frc2/command/CommandPtr.h>
+
+#include "auto/AutoChooser.h"
+#include "controls/Controls.h"
+#include "subsystems/agitator/Agitator.h"
+#include "subsystems/drive/Drive.h"
+#include "subsystems/injector/Injector.h"
+#include "subsystems/intake/Intake.h"
+#include "subsystems/shooter/Shooter.h"
 
 class RobotContainer {
-public:
-    RobotContainer();
+ public:
+  RobotContainer();
 
-    std::optional<frc2::CommandPtr> GetAutonomousCommand();
-    void UpdateDashboard();
+  std::optional<frc2::CommandPtr> GetAutonomousCommand();
+  void Periodic();
 
-private:
-    DriveSubsystem          drive;
-    ShooterSubsystem        shooter{};
-    InjectorSubsystem       injector{};
-   //LinearActuatorSubsystem actuator{};
-    IntakeSubsystem         intake{};
-    AgitatorSubsystem       agitator{};
+  // turns off shooter, injector, agitator and intake rollers
+  void StopMechanisms();
 
-    //frc::XboxController driverController{0};
-    frc2::CommandXboxController driverController{0};
-    //frc2::CommandXboxController codriverController{1};
+ private:
+  void ConfigureBindings();
+  frc2::CommandPtr Charge(Shooter::Location location);
+  std::string ShotStatus() const;
 
-    bool m_autoRPMMode = false;
+  static std::unique_ptr<Controls> CreateControls();
 
-    // Auton numbers:
-    //   0 = Shoot Hub        (default)
-    //   1 = Shoot Tower
-    //   2 = Shoot Barge
-    //   3 = Shoot Corner
-    //   4 = Right Side
-    //   5 = Shoot Hub Right Side
-    //   9 = Do Nothing
-    nt::IntegerEntry m_autoSelection;
-
-    // Still keep the SendableChooser for display purposes
-    frc::SendableChooser<std::string> m_chooser;
-    static constexpr const char* kAutoHub           = "Shoot Hub";
-    static constexpr const char* kAutoTower         = "Shoot Tower";
-    static constexpr const char* kAutoBarge         = "Shoot Barge";
-    static constexpr const char* kAutoCorner        = "Shoot Corner";
-    static constexpr const char* kAutoNothing       = "Do Nothing";
-    static constexpr const char* kAutoRightSide     = "Right Side";
-    static constexpr const char* kShootHubRightSide = "Shoot Hub Right Side";
-
-    void ConfigureBindings();
+  std::unique_ptr<Controls> m_controls = CreateControls();
+  Drive m_drive;
+  Shooter m_shooter;
+  Injector m_injector;
+  Agitator m_agitator;
+  Intake m_intake;
+  AutoChooser m_autoChooser{m_drive, m_shooter, m_injector, m_agitator, m_intake};
 };
